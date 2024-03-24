@@ -1,0 +1,40 @@
+<nav>
+    <div class="logo">
+        <img src="https://pbs.twimg.com/media/Dq07-cvVYAEIs1J.png">
+    </div>
+    <ul class="menu">
+        <li><a class="detail-Bt" (click)="detailBt()">detail</a></li>
+        <li><a class="upload-Bt" (click)="uploadBt()">upload</a></li>
+        <li><a class="history-Bt" (click)="historyBt()">history</a></li>
+        <li><a class="express-Bt" (click)="expressBt()">express</a></li>
+    </ul>
+</nav>
+
+<body>
+    <div class="page-container">
+        <h1>บันทึกข้อมูลพัสดุ</h1>
+
+        <div class="frame">
+            <div class="center">
+                <div class="title">
+                    <h1>Drop file to upload</h1>
+                </div>
+        
+                <div class="dropzone">
+                    <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+                    <input type="file" class="upload-input" />
+                </div>
+        
+                <button type="button" class="btn" name="uploadbutton">Upload file</button>
+        
+            </div>
+        </div>
+
+        <section>
+            <div class="example-button-row">
+                <button class="bt1" mat-raised-button>ยกเลิก</button>
+                <button class="bt2" mat-raised-button color="primary">ยืนยัน</button>
+            </div>
+        </section>
+    </div>
+</body>
