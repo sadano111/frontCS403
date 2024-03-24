@@ -1,4 +1,4 @@
-master:
+stages:
   - master-build
   - master-deploy
 
