@@ -78,7 +78,9 @@ export class LoginComponent implements OnInit {
             console.log("78", profile.userId)
             test = res
             console.log(test)
+            console.log(test["data"])
             if (test["data"] != null) {
+              console.log("in")
               console.log("test 82 ",Object.values(test["data"]))
               this.router.navigate(['/success']);
             }
@@ -104,9 +106,16 @@ export class LoginComponent implements OnInit {
     }).then(() => {
       this.os = liff.getOS();
       if (liff.isLoggedIn()) {
+        let test:any = []
         liff.getProfile().then(profile => {
           this.service.finduid(profile.userId).subscribe(res => {
-            if (res != null) {
+            console.log("78", profile.userId)
+            test = res
+            console.log(test)
+            console.log("liff_profile",test["data"])
+            if (test["data"] != null) {
+              console.log("liff_profile")
+              console.log("test 82 ",Object.values(test["data"]))
               this.router.navigate(['/success']);
             }
           })
