@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
         liff.getProfile().then(profile => {
           this.service.finduid(profile.userId).subscribe(res => {
             if (res != null) {
+              console.log(res)
               this.router.navigate(['/success']);
             }
           })
