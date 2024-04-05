@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
 
           let test: any = []
           let id = profile.userId
+          console.log(id)
           this.service.finduid(id).subscribe(res => {
             test = res
             console.log(test)
@@ -135,15 +136,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/success']);
     })
     
-  }
-
-  isDone() {
-    this.service.getLineUser().subscribe(res => {
-      console.log(this.service.getLineUser())
-      if (res != null) {
-        this.router.navigate(['/success']);
-      }
-    })
   }
 
   close() {
