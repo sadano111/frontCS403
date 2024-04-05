@@ -70,13 +70,15 @@ export class LoginComponent implements OnInit {
     }).then(() => {
       this.os = liff.getOS();
       if (liff.isLoggedIn()) {
-
+         console.log("73")
         liff.getProfile().then(profile => {
+          console.log("75")
           let test:any = []
           this.service.finduid(profile.userId).subscribe(res => {
+            console.log("78")
             test =  res
             if (test["idToken"] != null) {
-              console.log("test 79 ",Object.values(test["idToken"]))
+              console.log("test 81 ",Object.values(test["idToken"]))
               this.router.navigate(['/success']);
             }
           })
