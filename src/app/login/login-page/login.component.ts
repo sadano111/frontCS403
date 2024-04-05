@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
           let test:any = []
           this.service.finduid(profile.userId).subscribe(res => {
             test =  res
-            if (res != null) {
+            if (test != null) {
               console.log(Object.values(test["data"]))
               this.router.navigate(['/success']);
             }
