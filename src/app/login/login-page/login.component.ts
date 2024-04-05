@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
           console.log("75")
           let test:any = []
           this.service.finduid(profile.userId).subscribe(res => {
-            console.log("78")
+            console.log("78", profile.userId)
             test =  res
             if (test["idToken"] != null) {
               console.log("test 81 ",Object.values(test["idToken"]))
