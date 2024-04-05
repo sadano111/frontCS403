@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
           let test: any = []
           let id = profile.userId
           console.log(id)
-          this.service.finduid(id).subscribe(res => {
+          this.service.finduid(id.toString()).subscribe(res => {
             test = res
             console.log(test)
             console.log(test["data"])
