@@ -32,6 +32,10 @@ export class ServiceService {
     return this.http.get(this.url+"/security")
   }
 
+  finduid(id: any) {
+    return this.http.get(this.url+"/finduid/{id}")
+  }
+
 
   constructor(private http: HttpClient) { }
 }

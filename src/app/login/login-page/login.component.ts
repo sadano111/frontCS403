@@ -70,7 +70,17 @@ export class LoginComponent implements OnInit {
     }).then(() => {
       this.os = liff.getOS();
       if (liff.isLoggedIn()) {
-        this.isDone()
+
+        liff.getProfile().then(profile => {
+          this.service.finduid(profile.userId).subscribe(res => {
+            if (res != null) {
+              this.router.navigate(['/success']);
+            }
+          })
+          this.profile = profile;
+          console.log(this.profile)
+        }).catch(console.error);
+        
         const idToken = liff.getIDToken();
         if (idToken) {
           this.idToken = idToken.toString();
@@ -88,8 +98,12 @@ export class LoginComponent implements OnInit {
     }).then(() => {
       this.os = liff.getOS();
       if (liff.isLoggedIn()) {
-        this.isDone()
         liff.getProfile().then(profile => {
+          this.service.finduid(profile.userId).subscribe(res => {
+            if (res != null) {
+              this.router.navigate(['/success']);
+            }
+          })
           this.profile = profile;
           console.log(this.profile)
         }).catch(console.error);
