@@ -138,7 +138,8 @@ export class LoginComponent implements OnInit {
     console.log(data)
     this.service.addToken(data).subscribe(res => {
       console.log("128", data)
-      console.log("128",data["idToken"])
+      console.log("128", data["idToken"])
+      console.log("128", res)
       this.router.navigate(['/success']);
     })
     
