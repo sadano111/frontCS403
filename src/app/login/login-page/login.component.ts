@@ -78,8 +78,8 @@ export class LoginComponent implements OnInit {
             console.log("78", profile.userId)
             test = res
             console.log(test)
-            if (test["idToken"] != null) {
-              console.log("test 82 ",Object.values(test["idToken"]))
+            if (test["data"] != null) {
+              console.log("test 82 ",Object.values(test["data"]))
               this.router.navigate(['/success']);
             }
           })
