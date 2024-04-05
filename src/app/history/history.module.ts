@@ -8,13 +8,6 @@ import {MatSortModule} from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 
-// detail module
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-
 import { FormsModule } from '@angular/forms';
 
 
@@ -27,11 +20,6 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatSelectModule,
-    MatInputModule,
-    MatButtonModule,
     FormsModule,
     HttpClientModule
   ]

@@ -11,10 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { FormsModule } from '@angular/forms';
 
-// hustory module
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -28,9 +24,6 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatTableModule,
     FormsModule
   ]
 })
