@@ -5,6 +5,10 @@ import { HistoryComponent } from './history/history-page/history.component';
 import { UploadComponent } from './upload/upload-page/upload.component'
 import { LoginComponent } from './login/login-page/login.component';
 import { ExpressComponent } from './express/express-page/express.component';
+import { UserLoginComponent } from './user-login/userLogin/user-login.component';
+import { UserRegisterComponent } from './user-register/userRegister/user-register.component';
+import { SummaryComponent } from './summary/summary/summary.component';
+import { SuccesspageComponent } from './successpage/successpage/successpage.component';
 
 
 const routes: Routes = [
@@ -25,8 +29,24 @@ const routes: Routes = [
       import('./express/express.module').then(min => min.ExpressModule),component: ExpressComponent
   },
   {
-    path: '', loadChildren: () =>
+    path: 'linelogin', loadChildren: () =>
       import('./login/login.module').then(min => min.LoginModule),component: LoginComponent
+  },
+  {
+    path: '', loadChildren: () =>
+      import('./user-login/user-login.module').then(min => min.UserLoginModule),component: UserLoginComponent
+  },
+  {
+    path: 'singup', loadChildren: () =>
+      import('./user-register/user-register.module').then(min => min.UserRegisterModule),component: UserRegisterComponent
+  },
+  {
+    path: 'summary', loadChildren: () =>
+      import('./summary/summary.module').then(min => min.SummaryModule),component: SummaryComponent
+  },
+  {
+    path: 'success', loadChildren: () =>
+      import('./successpage/successpage.module').then(min => min.SuccesspageModule),component: SuccesspageComponent
   }
 
 ];

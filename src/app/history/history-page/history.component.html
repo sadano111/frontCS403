@@ -7,13 +7,24 @@
         <li><a class="upload-Bt" (click)="uploadBt()">upload</a></li>
         <li><a class="history-Bt" (click)="historyBt()">history</a></li>
         <li><a class="express-Bt" (click)="expressBt()">express</a></li>
+        <li *ngIf="roles=='addmin'"><a class="adduser-Bt" (click)="adduserBt()">add_user</a></li>
+        <li *ngIf="roles=='addmin'"><a class="summary-Bt" (click)="summaryBt()">summary</a></li>
+        
+        <button mat-icon-button [matMenuTriggerFor]="menus" class="logout"><mat-icon>account_circle</mat-icon></button>
+        <mat-menu #menus="matMenu">
+            <!-- เพิ่มข้อมูล username -->
+            <div class="firstname">{{firstname}} {{lastname}}</div>
+            <div class="roles">{{roles}}</div>
+            <button mat-menu-item (click)="logout()">
+                <span>Logout</span>
+            </button>
+        </mat-menu>
     </ul>
 </nav>
 
 <body>
     <div class="page-container">
-        <h1>รายการพัสดุ</h1>
-
+        <h1>รายการพัสดุของนักศึกษา</h1>
         <mat-form-field class="search">
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="ค้นหารายชื่อ" #input>

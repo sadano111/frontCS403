@@ -33,6 +33,11 @@ nav {
         } */
     }
 }
+.logout {
+    float: left;
+    background-color: rgb(0, 8, 255);
+    border: none;
+}
 
 body {
     background-color: rgb(130, 232, 255);

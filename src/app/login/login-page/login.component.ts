@@ -1,8 +1,10 @@
 import { ViewChild, ElementRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { liff } from '@line/liff';
-import { LoginService } from 'src/app/linelogin/login.service';
-import { LineliffService } from 'src/app/linelogin/lineliff.service';
+
+
+import { Router } from '@angular/router';
+import { ServiceService } from 'src/app/service.service';
 
 type UnPromise<T> = T extends Promise<infer X> ? X : T;
 
@@ -12,18 +14,18 @@ type UnPromise<T> = T extends Promise<infer X> ? X : T;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [LineliffService],
+  providers: [],
 })
 export class LoginComponent implements OnInit {
-  // profile: LIFFUserProfile;
-  // message: string;
-  // title = 'liff-demo';
   os: ReturnType<typeof liff.getOS>;
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
  
+  name: string = '';
+  idToken: string = '';
 
-  constructor() {
+  constructor(private router: Router, private service:ServiceService) {
   }
+
   // ngOnInit() {
   //   new Promise<LIFFUserProfile>(resolve => {
   //     liff.init(data => {
@@ -44,36 +46,71 @@ export class LoginComponent implements OnInit {
   // }
   
 
+  // ngOnInit(): void {
+    // liff.init({liffId:'2004090496-dKy6vmJy'}).then(()=>{
+    //   this.os = liff.getOS();
+    //   if(liff.isLoggedIn()){
+    //     liff.getProfile().then(profile => {
+    //       this.profile = profile;
+    //       console.log(profile)
+    //     }).catch(console.error);
+    //   }else{
+    //     liff.login()
+    //   }
+    // }).catch(console.error);
+  // }
+
   ngOnInit(): void {
-    liff.init({liffId:'2004090496-dKy6vmJy'}).then(()=>{
+    this.liff_token()
+  }
+
+  liff_token(): void {
+    liff.init({
+      liffId: '2004090496-dKy6vmJy'
+    }).then(() => {
       this.os = liff.getOS();
-      if(liff.isLoggedIn()){
-        liff.getProfile().then(profile => {
-          console.log(profile)
-          this.profile = profile;
-        }).catch(console.error);
-      }else{
-        liff.login()
+      if (liff.isLoggedIn()) {
+        const idToken = liff.getIDToken();
+        if (idToken) {
+          this.idToken = idToken.toString();
+          console.log(this.idToken);
+        }
+      } else {
+        liff.login();
       }
     }).catch(console.error);
   }
+  
+  liff_profile(): void {
+    liff.init({
+      liffId: '2004090496-dKy6vmJy'
+    }).then(() => {
+      this.os = liff.getOS();
+      if (liff.isLoggedIn()) {
+        liff.getProfile().then(profile => {
+          this.profile = profile;
+          console.log(this.profile)
+        }).catch(console.error);
+      } else {
+        liff.login();
+      }
+    }).catch(console.error);
+    console.log(JSON.stringify(this.profile));
+  }
 
-  // liff_open(): void {
-  //   liff.init({
-  //     liffId: '2004090496-dKy6vmJy'
-  //   }).then(() => {
-  //       this.os = liff.getOS();
-  //       if (liff.isLoggedIn()) {
-  //         liff.getProfile().then(profile => {
-  //           this.profile = profile;
-  //           console.log(this.profile)
-  //         })
-  //         .catch(console.error);
-  //       } else {
-  //         liff.login();
-  //       }
-  //     })
-  //     .catch(console.error);
-  //   console.log(JSON.stringify(this.profile));
-  // }
+  addToken() {
+    console.log(this.idToken)
+    let data = {
+      "idToken": this.idToken,
+      "name": this.name
+    }
+    console.log(data)
+    this.service.addToken(data).subscribe(res => {
+      console.log(data)
+    })
+  }
+
+  close() {
+    liff.closeWindow()
+  }
 }

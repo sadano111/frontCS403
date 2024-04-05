@@ -30,6 +30,27 @@ export class HistoryComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
+  ngOnInit(): void {
+    this.getData()
+    this.getLogin()
+  }
+
+  public logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
+  public firstname:any = ""
+  public lastname:any = ""
+  public roles:any = ""
+
+  getLogin() {
+    this.firstname = localStorage.getItem("firstname")
+    this.lastname = localStorage.getItem("lastname")
+    this.roles = localStorage.getItem("roles")
+    console.log(this.firstname)
+  }
+
   getData() {
     let test:any = []
     this.service.getList().subscribe(res => {
@@ -38,9 +59,7 @@ export class HistoryComponent {
       this.convert(res)
     })
   }
-  ngOnInit(): void {
-    this.getData()
-  }
+  
   convert(data: any) {
     console.log(Object.values(data["data"]).length)
     let list = []
@@ -78,6 +97,12 @@ export class HistoryComponent {
   };
   expressBt() {
     this.router.navigateByUrl('/expresspage');
+  };
+  adduserBt() {
+    this.router.navigateByUrl('/singup');
+  };
+  summaryBt() {
+    this.router.navigateByUrl('/summary');
   }
 
   ngAfterViewInit() {

@@ -9,6 +9,25 @@ import { Router } from '@angular/router';
 export class UploadComponent {
   constructor(private router: Router) { }
 
+  public firstname:any = ""
+  public lastname:any = ""
+  public roles:any = ""
+
+  ngOnInit(): void {
+    this.getLogin()
+  }
+
+  public logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+  getLogin() {
+    this.firstname = localStorage.getItem("firstname")
+    this.lastname = localStorage.getItem("lastname")
+    this.roles = localStorage.getItem("roles")
+    console.log(this.firstname)
+  }
+
   detailBt() {
     this.router.navigateByUrl('/detail');
   };
@@ -23,4 +42,10 @@ export class UploadComponent {
   expressBt() {
     this.router.navigateByUrl('/expresspage');
   };
+  adduserBt() {
+    this.router.navigateByUrl('/singup');
+  };
+  summaryBt() {
+    this.router.navigateByUrl('/summary');
+  }
 }

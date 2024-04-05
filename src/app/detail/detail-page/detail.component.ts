@@ -12,7 +12,27 @@ import { ServiceService } from 'src/app/service.service';
   
 
 export class DetailComponent {
-  constructor(private router: Router, private service:ServiceService) { }
+  constructor(private router: Router, private service: ServiceService) { }
+
+  public firstname:any = ""
+  public lastname:any = ""
+  public roless:any = ""
+
+  ngOnInit(): void {
+    this.getLogin()
+  }
+  
+  getLogin() {
+    this.firstname = localStorage.getItem("firstname")
+    this.lastname = localStorage.getItem("lastname")
+    this.roless = localStorage.getItem("roles")
+    console.log(this.firstname)
+  }
+
+  public logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
 
   addList() {
     let data = {
@@ -26,6 +46,11 @@ export class DetailComponent {
     this.service.addList(data).subscribe(res => {
       console.log(data)
     })
+    this.name = ""
+    this.phone = ""
+    this.selectedRole = ""
+    this.selectedExpress = ""
+    this.parcel = 0
   }
 
   detailBt() {
@@ -42,6 +67,12 @@ export class DetailComponent {
   expressBt() {
     this.router.navigateByUrl('/expresspage');
   };
+  adduserBt() {
+    this.router.navigateByUrl('/singup');
+  };
+  summaryBt() {
+    this.router.navigateByUrl('/summary');
+  }
 
   // ตัวแปร สำหรับเลือ role และ company
   selectedExpress: string = ""

@@ -32,6 +32,12 @@ import {MatSortModule} from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { ExpressComponent } from './express/express-page/express.component';
+import { UserLoginComponent } from './user-login/userLogin/user-login.component';
+import { UserRegisterComponent } from './user-register/userRegister/user-register.component';
+import { MatCardModule } from '@angular/material/card';
+import { SummaryComponent } from './summary/summary/summary.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { SuccesspageComponent } from './successpage/successpage/successpage.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,10 @@ import { ExpressComponent } from './express/express-page/express.component';
     UploadComponent,
     LoginComponent,
     ExpressComponent,
+    UserLoginComponent,
+    UserRegisterComponent,
+    SummaryComponent,
+    SuccesspageComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +68,9 @@ import { ExpressComponent } from './express/express-page/express.component';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

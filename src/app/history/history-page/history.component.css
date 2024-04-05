@@ -36,3 +36,9 @@ h1 {
     width: 20%;
     margin-left: 79%;
 }
+
+.logout {
+    float: left;
+    background-color: rgb(0, 8, 255);
+    border: none;
+}

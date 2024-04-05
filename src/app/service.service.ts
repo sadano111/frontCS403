@@ -19,6 +19,19 @@ export class ServiceService {
   getDetail() {
     return this.http.get(this.url+"/getdetail")
   }
+  
+  addToken(body:any) {
+    return this.http.post(this.url+"/id_token",body)
+  }
+
+  getLineUser() {
+    return this.http.get(this.url+"/token")
+  }
+
+  getSecurityUser() {
+    return this.http.get(this.url+"/security")
+  }
+
 
   constructor(private http: HttpClient) { }
 }

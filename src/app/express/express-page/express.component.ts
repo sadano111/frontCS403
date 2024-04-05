@@ -31,9 +31,21 @@ export class ExpressComponent {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
-  
+
+  public firstname:any = ""
+  public lastname:any = ""
+  public roles:any = ""
+
   ngOnInit(): void {
     this.getData()
+    this.getLogin()
+  }
+
+  getLogin() {
+    this.firstname = localStorage.getItem("firstname")
+    this.lastname = localStorage.getItem("lastname")
+    this.roles = localStorage.getItem("roles")
+    console.log(this.firstname)
   }
 
   testData: any[] = []
@@ -67,6 +79,11 @@ export class ExpressComponent {
       console.log(list)
     }
   }
+ 
+  public logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
 
   constructor(private router: Router, private service: ServiceService) { 
     this.dataDisplay = new MatTableDataSource<expressData>(data);
@@ -87,6 +104,12 @@ export class ExpressComponent {
   expressBt() {
     this.router.navigateByUrl('/expresspage');
   };
+  adduserBt() {
+    this.router.navigateByUrl('/singup');
+  };
+  summaryBt() {
+    this.router.navigateByUrl('/summary');
+  }
 
   ngAfterViewInit() {
     this.dataDisplay.paginator = this.paginator;
