@@ -116,6 +116,7 @@ export class LoginComponent implements OnInit {
 
   isDone() {
     this.service.getLineUser().subscribe(res => {
+      console.log(this.service.getLineUser())
       if (res != null) {
         this.router.navigate(['/success']);
       }
