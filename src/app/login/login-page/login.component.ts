@@ -107,6 +107,7 @@ export class LoginComponent implements OnInit {
     console.log(data)
     this.service.addToken(data).subscribe(res => {
       console.log(data)
+      this.router.navigate(['/success']);
     })
   }
 
