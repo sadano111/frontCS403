@@ -72,7 +72,8 @@ export class LoginComponent implements OnInit {
       if (liff.isLoggedIn()) {
         liff.getProfile().then(profile => {
 
-          let test:any = []
+          let test: any = []
+          console.log(profile.userId)
           this.service.finduid(profile.userId).subscribe(res => {
             test = res
             console.log(test["data"])
