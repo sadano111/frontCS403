@@ -9,6 +9,7 @@ import { UserLoginComponent } from './user-login/userLogin/user-login.component'
 import { UserRegisterComponent } from './user-register/userRegister/user-register.component';
 import { SummaryComponent } from './summary/summary/summary.component';
 import { SuccesspageComponent } from './successpage/successpage/successpage.component';
+import { authGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'history', loadChildren: () =>
-      import('./history/history.module').then(min => min.HistoryModule),component: HistoryComponent
+      import('./history/history.module').then(min => min.HistoryModule), component: HistoryComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'upload', loadChildren: () =>
