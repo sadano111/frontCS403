@@ -33,7 +33,7 @@ export class ServiceService {
   }
 
   finduid(id: any) {
-    return this.http.get(this.url+"/finduid/{id}")
+    return this.http.get(this.url+"/finduid")
   }
 
 
