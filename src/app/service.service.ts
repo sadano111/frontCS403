@@ -32,10 +32,8 @@ export class ServiceService {
     return this.http.get(this.url+"/security")
   }
 
-  finduid(id: any) {
-    return this.http.get(this.url+"/finduid")
-  }
-
-
+  finduid(idToken: string) {
+    return this.http.get(`${this.url}/finduid/${idToken}`);
+}
   constructor(private http: HttpClient) { }
 }
