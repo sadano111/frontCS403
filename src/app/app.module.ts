@@ -38,6 +38,7 @@ import { MatCardModule } from '@angular/material/card';
 import { SummaryComponent } from './summary/summary/summary.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { SuccesspageComponent } from './successpage/successpage/successpage.component';
+import { DialogerrorComponent } from './dialogerror/dialogerror.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SuccesspageComponent } from './successpage/successpage/successpage.comp
     UserRegisterComponent,
     SummaryComponent,
     SuccesspageComponent,
+    DialogerrorComponent,
   ],
   imports: [
     BrowserModule,
