@@ -26,27 +26,63 @@
     <div class="page-container">
         <h1>บันทึกข้อมูลพัสดุ</h1>
 
-        <div class="frame">
+        <div *ngIf="!name" class="frame">
             <div class="center">
                 <div class="title">
                     <h1>Drop file to upload</h1>
                 </div>
         
                 <div class="dropzone">
-                    <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
-                    <input type="file" class="upload-input" />
+                    <img *ngIf="!imageUrl" src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+                    <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image" style="width: 100px; height: 100px;">
+                    <!-- <input type="file" class="upload-input" /> -->
                 </div>
-        
-                <button type="button" class="btn" name="uploadbutton">Upload file</button>
-        
+                <input class="showimg" id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*"/>
+
+                <button type="button" class="btn" name="uploadbutton" (click)="onUpload()" >Upload file</button>
             </div>
         </div>
 
-        <!-- <section>
-            <div class="example-button-row">
-                <button class="bt1" mat-raised-button>ยกเลิก</button>
-                <button class="bt2" mat-raised-button color="primary">ยืนยัน</button>
+        <div *ngIf="name">
+            <div class="row g-3 align-items-center a1">
+                <div class="col-auto">
+                    <label class="col-form-label">ลำดับที่</label>
+                </div>
+            
+                <div class="col-auto ">
+                    <input [(ngModel)]="number" placeholder="กรุณาใส่ชื่อของคุณ" value="" class="w-100 h2 b1">
+                </div>
             </div>
-        </section> -->
+
+            <div class="row g-3 align-items-center a1">
+                <div class="col-auto">
+                    <label class="col-form-label">เบอร์โทร</label>
+                </div>
+            
+                <div class="col-auto ">
+                    <input [(ngModel)]="tel" placeholder="กรุณาใส่ชื่อของคุณ" value="" class="w-100 h2 b1">
+                </div>
+            </div>
+
+            <div class="row g-3 align-items-center a1">
+                <div class="col-auto">
+                    <label class="col-form-label">ชื่อ</label>
+                </div>
+            
+                <div class="col-auto ">
+                    <input [(ngModel)]="name" placeholder="กรุณาใส่ชื่อของคุณ" value="name" class="w-100 h2 b1">
+                </div>
+            </div>
+
+            <section>
+                <div class="example-button-row">
+                    <button class="bt1" mat-raised-button>ยกเลิก</button>
+                    <button class="bt2" mat-raised-button color="primary">ยืนยัน</button>
+                </div>
+            </section>
+
+        </div>
+
+        
     </div>
 </body>

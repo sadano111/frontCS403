@@ -34,6 +34,11 @@ export class ServiceService {
 
   finduid(idToken: string) {
     return this.http.get(`${this.url}/finduid/${idToken}`);
-}
+  }
+
+  upload(files: any) {
+    return this.http.post("https://cs403-m3uwkxxhna-as.a.run.app/perform-ocr-multiple",files);
+  }
+
   constructor(private http: HttpClient) { }
 }
