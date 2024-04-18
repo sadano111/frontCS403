@@ -26,7 +26,7 @@
     <div class="page-container">
         <h1>บันทึกข้อมูลพัสดุ</h1>
 
-        <div *ngIf="!name" class="frame">
+        <div *ngIf="name" class="frame">
             <div class="center">
                 <div class="title">
                     <h1>Drop file to upload</h1>
@@ -43,14 +43,14 @@
             </div>
         </div>
 
-        <div *ngIf="name">
+        <div *ngIf="!name">
             <div class="row g-3 align-items-center a1">
                 <div class="col-auto">
                     <label class="col-form-label">ลำดับที่</label>
                 </div>
             
                 <div class="col-auto ">
-                    <input [(ngModel)]="number" placeholder="กรุณาใส่ชื่อของคุณ" value="" class="w-100 h2 b1">
+                    <input [(ngModel)]="number" placeholder="กรุณาใส่ลำดับ" value="number" class="w-100 h2 b1">
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
                 </div>
             
                 <div class="col-auto ">
-                    <input [(ngModel)]="tel" placeholder="กรุณาใส่ชื่อของคุณ" value="" class="w-100 h2 b1">
+                    <input [(ngModel)]="phone" placeholder="กรุณาใส่เบอร์โทร" value="phone" class="w-100 h2 b1">
                 </div>
             </div>
 
@@ -74,10 +74,25 @@
                 </div>
             </div>
 
+            <div class="row g-3 align-items-center a1">
+                <div class="col-auto">
+                    <label class="col-form-label">บริษัทขนส่ง</label>
+                </div>
+            
+                <div class="col-auto ">
+                    <mat-form-field class="company" appearance="fill">
+                        <mat-select [(ngModel)]="selectedCompany" placeholder="กรุณาเลือกบริษัทขนส่งของคุณ" name="company">
+                            <mat-option *ngFor="let company of express" [value]="company.value">{{company.viewValue}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- <input [(ngModel)]="company" placeholder="กรุณาใส่เบอร์โทร" value="company" class="w-100 h2 b1"> -->
+                </div>
+            </div>
+
             <section>
                 <div class="example-button-row">
-                    <button class="bt1" mat-raised-button>ยกเลิก</button>
-                    <button class="bt2" mat-raised-button color="primary">ยืนยัน</button>
+                    <button class="bt1" mat-raised-button (click)="close()">ยกเลิก</button>
+                    <button class="bt2" mat-raised-button color="primary" (click)="addOCR()">ยืนยัน</button>
                 </div>
             </section>
 

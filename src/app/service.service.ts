@@ -40,5 +40,9 @@ export class ServiceService {
     return this.http.post("https://cs403-m3uwkxxhna-as.a.run.app/perform-ocr-multiple",files);
   }
 
+  addocr(data: any) {
+    return this.http.post(this.url+"/addocr",data)
+  }
+
   constructor(private http: HttpClient) { }
 }

@@ -19,6 +19,48 @@ export class UploadComponent {
     this.getLogin()
   }
 
+  // insert data to database
+  addOCR() {
+    let data = {
+      "number": this.number,
+      "phone": this.phone,
+      "name": this.name,
+      "status": this.status,
+      "company": this.selectedCompany,
+      "take": this.take
+    }
+    console.log(data)
+    this.service.addocr(data).subscribe(res => {
+      console.log(res)
+      this.router.navigate(['/upload'])
+    })
+    this.number = ""
+    this.phone = ""
+    this.name = ""
+    this.status = false
+    this.take = false
+    this.selectedCompany = ""
+  }
+  number: string = ""
+  phone: string = ""
+  status: boolean = false
+  take: boolean = false
+  selectedCompany: string = ""
+
+  express = [
+    { value: 'flash', viewValue: 'Flash Express' },
+    { value: 'kerry', viewValue: 'Kerry Express' },
+    { value: 'thai-post', viewValue: 'Thai Post' },
+    { value: 'best', viewValue: 'Best Express' },
+    { value: 'jnt', viewValue: 'J&T Express' },
+  ];
+
+  close() {
+    this.name = ""
+    this.router.navigate(['/upload'])
+  }
+
+  // upload file image
   public emitsendObject: any
   public imageUrl: any
 
@@ -34,8 +76,6 @@ export class UploadComponent {
   }
 
   public name: string = ""
-  public number: string = ""
-  public tel: string = ""
   
   public onUpload() {
     const formData = new FormData();

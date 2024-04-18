@@ -8,10 +8,12 @@ import {MatTableDataSource} from '@angular/material/table';
 import { ServiceService } from 'src/app/service.service';
 
 export interface UserData {
-  id: number;
+  number: number;
   phone: string;
   name: any;
   date: Date;
+  company: any;
+  take: any;
 }
 
 
@@ -24,7 +26,7 @@ const data: UserData[] = []
 })
 export class HistoryComponent {
 
-  display: any[] = ['id', 'phone', 'name', 'date'];
+  display: any[] = ['number', 'phone', 'name', 'date', 'company', 'take'];
   dataDisplay: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -64,14 +66,19 @@ export class HistoryComponent {
     console.log(Object.values(data["data"]).length)
     let list = []
     for (let i = 0; i < Object.values(data["data"]).length; i++){
+      // if (data["data"][i]["take"] == false) {
+      //   data["data"][i]["take"] = 'ยังไม่ได้รับพัสดุ'
+      // }
       list.push({
-        "id": i+1,
-        "phone": "095",
-        "name": Array(data["data"][i]["result"]),
-        "date": new Date()
+        "number": data["data"][i]["number"],
+        "name": data["data"][i]["name"],
+        "phone": data["data"][i]["phone"],
+        "date": data["data"][i]["date"],
+        "company": data["data"][i]["company"],
+        "take": data["data"][i]["take"]
       })
       this.dataDisplay.data = list
-      console.log(list)
+      console.log(list) 
     }
   }
 

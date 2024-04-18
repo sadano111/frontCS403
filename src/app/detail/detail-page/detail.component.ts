@@ -38,7 +38,6 @@ export class DetailComponent {
     let data = {
       "name": this.name,
       "phone": this.phone,
-      "role": this.selectedRole,
       "express": this.selectedExpress,
       "parcel": Number (this.parcel)
     }
@@ -48,10 +47,24 @@ export class DetailComponent {
     })
     this.name = ""
     this.phone = ""
-    this.selectedRole = ""
     this.selectedExpress = ""
     this.parcel = 0
   }
+
+  // ตัวแปร สำหรับเลือ role และ company
+  selectedExpress: string = ""
+
+  name: string = ""
+  phone: string = ""
+  parcel: number = 0
+  
+  express = [
+    { value: 'flash', viewValue: 'Flash Express' },
+    { value: 'kerry', viewValue: 'Kerry Express' },
+    { value: 'thai-post', viewValue: 'Thai Post' },
+    { value: 'best', viewValue: 'Best Express' },
+    { value: 'jnt', viewValue: 'J&T Express' },
+  ];
 
   detailBt() {
     this.router.navigateByUrl('/detail');
@@ -74,24 +87,4 @@ export class DetailComponent {
     this.router.navigateByUrl('/summary');
   }
 
-  // ตัวแปร สำหรับเลือ role และ company
-  selectedExpress: string = ""
-  selectedRole: string = ""
-
-  name: string = ""
-  phone: string = ""
-  parcel: number = 0
-  
-  express = [
-    { value: 'flash', viewValue: 'Flash Express' },
-    { value: 'kerry', viewValue: 'Kerry Express' },
-    { value: 'thai-post', viewValue: 'Thai Post' },
-    { value: 'best', viewValue: 'Best Express' },
-    { value: 'jnt', viewValue: 'J&T Express' },
-  ];
-
-  roles = [
-    { value: 'security', viewValue: 'ยาม' },
-    { value: 'transport', viewValue: 'พนักงานส่งของ' },
-  ];
 }

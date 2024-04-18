@@ -9,7 +9,7 @@ import { ServiceService } from 'src/app/service.service';
 
 export interface expressData {
   date: Date;
-  name: any;
+  name: string;
   phone: any;
   express: any;
   parcel: any;
@@ -50,29 +50,38 @@ export class ExpressComponent {
 
   testData: any[] = []
   
+  // getData() {
+  //   let test:any = []
+  //   this.service.getDetail().subscribe(res => {
+  //     for (let i = 0; i < Object.values(res)[1].length; i++){
+  //       console.log("1")
+  //       this.testData.push(Object.values(res)[1][i])
+  //     }
+  //     test = res
+  //     console.log(this.testData)
+  //     this.convert(this.testData)
+  //   })
+  // }
   getData() {
     let test:any = []
     this.service.getDetail().subscribe(res => {
-      for (let i = 0; i < Object.values(res)[1].length; i++){
-        console.log("1")
-        this.testData.push(Object.values(res)[1][i])
-      }
-      test = res
-      console.log(this.testData)
-      this.convert(this.testData)
+      test =  res
+      console.log(Object.values(test["data"]))
+      this.convert(res)
     })
   }
 
   convert(data: any) {
-    console.log(data[2]["name"])
+    console.log(Object.values(data["data"]).length)
+    console.log(data["data"]["phone"])
     let list = []
-    for (let i = 0; i < data.length; i++){
+    for (let i = 0; i < Object.values(data["data"]).length; i++){
       list.push({
-        "date": new Date(),
-        "name": data[i]["name"],
-        "phone": data[i]["phone"],
-        "express": data[i]["express"],
-        "parcel": data[i]["parcel"]
+        "date": data["data"][i]["date"],
+        "name": data["data"][i]["name"],
+        "phone": data["data"][i]["phone"],
+        "express": data["data"][i]["express"],
+        "parcel": data["data"][i]["parcel"]
       })
       this.dataDisplay.data = list
       console.log(this.dataDisplay.data)
