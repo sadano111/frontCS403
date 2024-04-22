@@ -43,6 +43,7 @@ export class StudentComponent implements OnInit  {
   @ViewChild(MatSort) sort: MatSort | any;
 
   ngOnInit(): void {
+    this.getData()
     this.liff_token()
   }
 
