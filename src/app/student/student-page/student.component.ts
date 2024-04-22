@@ -57,6 +57,7 @@ export class StudentComponent implements OnInit  {
         if (idToken) {
           this.idToken = idToken.toString();
           console.log(this.idToken);
+          this.getData()
         }
       } else {
         liff.login({redirectUri:"https://front-cs-403.vercel.app/table"});
