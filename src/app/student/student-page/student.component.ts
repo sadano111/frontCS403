@@ -55,7 +55,7 @@ export class StudentComponent implements OnInit  {
       if (liff.isLoggedIn()) {       
         liff.getProfile().then(profile => {
           let id = profile.userId
-          this.getData()
+          this.getData(id)
         }).catch(console.error);
       } else {
         liff.login({redirectUri:"https://front-cs-403.vercel.app/table"});
@@ -63,11 +63,11 @@ export class StudentComponent implements OnInit  {
     }).catch(console.error);
   }
 
-  getData() {
+  getData(id:any) {
     let test: any = []
     console.log("1")
-    console.log(this.id)
-    this.service.getParcel(this.id).subscribe(res => {
+    console.log(id)
+    this.service.getParcel(id).subscribe(res => {
       test =  res
       console.log(Object.values(test["data"]))
       this.convert(res)
