@@ -83,11 +83,11 @@ export class StudentComponent implements OnInit  {
       // }
       list.push({
         "number": data["data"][i]["number"],
-        "name": Array(data["data"][i]["name"]),
-        "phone": Array(data["data"][i]["phone"]),
-        "date": Array(data["data"][i]["date"]),
-        "company": Array(data["data"][i]["company"]),
-        "take": Array(data["data"][i]["take"])
+        "name": data["data"][i]["name"],
+        "phone": data["data"][i]["phone"],
+        "date": data["data"][i]["date"],
+        "company": data["data"][i]["company"],
+        "take": data["data"][i]["take"]
       })
       // this.dataDisplay.data = list
       console.log(list) 
