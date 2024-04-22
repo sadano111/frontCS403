@@ -82,7 +82,7 @@ export class StudentComponent implements OnInit  {
       //   data["data"][i]["take"] = 'ยังไม่ได้รับพัสดุ'
       // }
       list.push({
-        "number": Array(data["data"][i]["number"]),
+        "number": data["data"][i]["number"],
         "name": Array(data["data"][i]["name"]),
         "phone": Array(data["data"][i]["phone"]),
         "date": Array(data["data"][i]["date"]),
