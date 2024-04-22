@@ -67,6 +67,7 @@ export class StudentComponent implements OnInit  {
   getData() {
     let test: any = []
     console.log("1")
+    console.log(this.idToken)
     this.service.getParcel(this.idToken).subscribe(res => {
       test =  res
       console.log(Object.values(test["data"]))
