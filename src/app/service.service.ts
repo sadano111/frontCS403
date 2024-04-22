@@ -41,7 +41,11 @@ export class ServiceService {
   }
 
   addocr(data: any) {
-    return this.http.post(this.url+"/addocr",data)
+    return this.http.post("https://cs403-m3uwkxxhna-as.a.run.app/addocr",data)
+  }
+
+  getParcel(idToken: any) {
+    return this.http.get(`${this.url}/table/${idToken}`)
   }
 
   constructor(private http: HttpClient) { }

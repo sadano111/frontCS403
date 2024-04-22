@@ -11,6 +11,7 @@ import { SummaryComponent } from './summary/summary/summary.component';
 import { SuccesspageComponent } from './successpage/successpage/successpage.component';
 import { authGuard } from './auth.guard';
 import { rolesGuard } from './roles.guard';
+import { StudentComponent } from './student/student-page/student.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,11 @@ const routes: Routes = [
   {
     path: 'success', loadChildren: () =>
       import('./successpage/successpage.module').then(min => min.SuccesspageModule),component: SuccesspageComponent
+  },
+  // page table for user (student)
+  {
+    path: 'table', loadChildren: () =>
+      import('./student/student.module').then(min => min.StudentModule),component: StudentComponent
   }
 
 ];
