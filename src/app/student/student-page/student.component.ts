@@ -31,7 +31,7 @@ export class StudentComponent implements OnInit  {
   os: ReturnType<typeof liff.getOS>;
   profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
  
-  id: string = '';
+  idToken: string = '';
 
   constructor(private router: Router, private service: ServiceService) {
     this.dataDisplay = new MatTableDataSource(data);
@@ -53,21 +53,23 @@ export class StudentComponent implements OnInit  {
     }).then(() => {
       this.os = liff.getOS();
       if (liff.isLoggedIn()) {       
-        liff.getProfile().then(profile => {
-          let id = profile.userId
-          this.getData(id)
-        }).catch(console.error);
+        const idToken = liff.getIDToken();
+        if (idToken) {
+          this.idToken = idToken.toString();
+          console.log(this.idToken);
+          this.getData(this.idToken)
+        }
       } else {
         liff.login({redirectUri:"https://front-cs-403.vercel.app/table"});
       }
     }).catch(console.error);
   }
 
-  getData(id:any) {
+  getData(idToken:any) {
     let test: any = []
     console.log("1")
-    console.log(id)
-    this.service.getParcel(id).subscribe(res => {
+    console.log(idToken)
+    this.service.getParcel(idToken).subscribe(res => {
       test =  res
       console.log(Object.values(test["data"]))
       this.convert(res)
