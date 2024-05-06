@@ -28,6 +28,12 @@
     <script src="/js/bootstrap.min.js"></script>
 </body>
 </html> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Trirong:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
 
 <nav>
     <div class="logo">
@@ -53,67 +59,70 @@
     </ul>
 </nav>
 <body>
-    <div class="page-container">
+    
+    <div class="box">
+        <div class="page-container">
 
-        <h1>บันทึกการส่งพัสดุ</h1>
+            <h1>บันทึกการส่งพัสดุ</h1>
 
-        <mat-card class="card">
+            <mat-card class="card">
 
-            <div class="row g-3 align-items-center a1">
-                <div class="col-auto">
-                    <label class="col-form-label">ชื่อ</label>
+                <div class="row g-3 align-items-center a1">
+                    <div class="col-auto">
+                        <label class="col-form-label">ชื่อ</label>
+                    </div>
+
+                    <div class="col-auto ">
+                        <input [(ngModel)]="name" placeholder="กรุณาใส่ชื่อของคุณ" value="" class="w-100 h2 b1">
+                    </div>
                 </div>
 
-                <div class="col-auto ">
-                    <input [(ngModel)]="name" placeholder="กรุณาใส่ชื่อของคุณ" value="" class="w-100 h2 b1">
+                <div class="row g-3 align-items-center a2">
+                    <div class="col-auto">
+                        <label class="col-form-label">เบอร์โทร</label>
+                    </div>
+                
+                    <div class="col-auto ">
+                        <input [(ngModel)]="phone" placeholder="กรุณาใส่เบอร์โทรของคุณ" value="" class="w-100 h2 b2">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row g-3 align-items-center a2">
-                <div class="col-auto">
-                    <label class="col-form-label">เบอร์โทร</label>
+                <div class="row g-3 align-items-center a4">
+                    <div class="col-auto">
+                        <label class="col-form-label">ชื่อบริษัทขนส่ง</label>
+                    </div>
+                
+                    <div class="col-auto">
+                        <mat-form-field class="b4" appearance="fill">
+                            <mat-select [(ngModel)]="selectedExpress" placeholder="กรุณาเลือกบริษัทขนส่งของคุณ" name="company">
+                                <mat-option *ngFor="let company of express" [value]="company.value">{{company.viewValue}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </div>
-            
-                <div class="col-auto ">
-                    <input [(ngModel)]="phone" placeholder="กรุณาใส่เบอร์โทรของคุณ" value="" class="w-100 h2 b2">
-                </div>
-            </div>
 
-            <div class="row g-3 align-items-center a4">
-                <div class="col-auto">
-                    <label class="col-form-label">ชื่อบริษัทขนส่ง</label>
+                <div class="row g-3 align-items-center a5">
+                    <div class="col-auto">
+                        <label class="col-form-label">จำนวนพัสดุ</label>
+                    </div>
+                
+                    <div class="col-auto">
+                        <input [(ngModel)]="parcel" placeholder="กรุณาใส่จำนวนพัสดุ" value="" class="w-100 h2 b5">ชิ้น
+                    </div>
+                    <!-- <div class="col-auto a6">
+                        <span class="form-text">ชิ้น</span>
+                    </div> -->
                 </div>
-            
-                <div class="col-auto">
-                    <mat-form-field class="b4" appearance="fill">
-                        <mat-select [(ngModel)]="selectedExpress" placeholder="กรุณาเลือกบริษัทขนส่งของคุณ" name="company">
-                            <mat-option *ngFor="let company of express" [value]="company.value">{{company.viewValue}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
 
-            <div class="row g-3 align-items-center a5">
-                <div class="col-auto">
-                    <label class="col-form-label">จำนวนพัสดุ</label>
-                </div>
-            
-                <div class="col-auto">
-                    <input [(ngModel)]="parcel" placeholder="กรุณาใส่จำนวนพัสดุ" value="" class="w-100 h2 b5">ชิ้น
-                </div>
-                <!-- <div class="col-auto a6">
-                    <span class="form-text">ชิ้น</span>
-                </div> -->
-            </div>
+                <section>
+                    <div class="example-button-row">
+                        <button class="bt1" mat-raised-button>ยกเลิก</button>
+                        <button class="bt2" color="primary" (click)="addList()">ยืนยัน</button>
+                    </div>
+                </section>
 
-            <section>
-                <div class="example-button-row">
-                    <button class="bt1" mat-raised-button>ยกเลิก</button>
-                    <button class="bt2" color="primary" (click)="addList()">ยืนยัน</button>
-                </div>
-            </section>
+            </mat-card>
 
-        </mat-card>
-
+        </div>
     </div>
 </body>

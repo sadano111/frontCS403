@@ -1,7 +1,8 @@
 nav {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(0, 8, 255);
+    background-image: linear-gradient(to right,#21B699, #1AAEAF, #0C9EDB, #0192FB);
+    /* background-color: rgb(0, 8, 255); */
     align-items: center;
     padding: 0.5rem;
 
@@ -23,7 +24,8 @@ nav {
     }
 }
 body {
-    background-color: rgb(130, 232, 255);
+    background-color: #21B699;
+    padding: 5rem;
 }
 
 /* test */
@@ -143,6 +145,10 @@ h1 {
     font-weight: 300; */
     text-align: center;
     color: #000000;
+    margin-top: 1rem;
+    font-family: "Trirong", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .dropzone {
@@ -195,7 +201,7 @@ h1 {
 }
 .logout {
     float: left;
-    background-color: rgb(0, 8, 255);
+    background-color: rgb(255, 255, 255);
     border: none;
 }
 
