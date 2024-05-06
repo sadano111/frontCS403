@@ -8,19 +8,17 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
-type UnPromise<T> = T extends Promise<infer X> ? X : T;
 
-const data: ParcelData[] = []
-
-export interface ParcelData {
+export interface UserData {
   number: number;
-  phone: string;
   name: any;
   date: Date;
   company: any;
   take: any;
 }
 
+
+const data: UserData[] = []
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -28,52 +26,42 @@ export interface ParcelData {
 })
   
 export class StudentComponent implements OnInit  {
-  os: ReturnType<typeof liff.getOS>;
-  profile!: UnPromise<ReturnType<typeof liff.getProfile>>;
- 
-  idToken: string = '';
-
-  constructor(private router: Router, private service: ServiceService) {
-    this.dataDisplay = new MatTableDataSource(data);
-  }
-  display: any[] = ['number', 'phone', 'name', 'date', 'company', 'take'];
-  dataDisplay: MatTableDataSource<ParcelData>;
+  display: any[] = ['number', 'name', 'date', 'company', 'take'];
+  dataDisplay: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
   ngOnInit(): void {
-    // this.getData()
-    this.liff_profile()
+    this.getData()
+    this.getLogin()
   }
 
-  liff_profile(): void {
-    liff.init({
-      liffId: '2004090496-dKy6vmJy'
-    }).then(() => {
-      this.os = liff.getOS();
-      if (liff.isLoggedIn()) {       
-        liff.getProfile().then(profile => {
-          let idToken = profile.userId
-          this.getData(idToken)
-        }).catch(console.error);
-      } else {
-        liff.login({redirectUri:"https://front-cs-403.vercel.app/table"});
-      }
-    }).catch(console.error);
+  public logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
   }
 
-  getData(idToken:any) {
-    let test: any = []
-    console.log("1")
-    console.log(idToken)
-    this.service.getParcel(idToken).subscribe(res => {
+  public firstname:any = ""
+  public lastname:any = ""
+  public roles:any = ""
+
+  getLogin() {
+    this.firstname = localStorage.getItem("firstname")
+    this.lastname = localStorage.getItem("lastname")
+    this.roles = localStorage.getItem("roles")
+    console.log(this.firstname)
+  }
+
+  getData() {
+    let test:any = []
+    this.service.getList().subscribe(res => {
       test =  res
       console.log(Object.values(test["data"]))
       this.convert(res)
     })
   }
-
+  
   convert(data: any) {
     console.log(Object.values(data["data"]).length)
     let list = []
@@ -82,16 +70,45 @@ export class StudentComponent implements OnInit  {
       //   data["data"][i]["take"] = 'ยังไม่ได้รับพัสดุ'
       // }
       list.push({
-        "number": Array(data[i]["data"][i]["number"]),
-        "name": Array(data[i]["data"][i]["name"]),
-        "phone": Array(data[i]["data"][i]["phone"]),
-        "date": Array(data[i]["data"][i]["date"]),
-        "company": Array(data[i]["data"][i]["company"]),
-        "take": Array(data[i]["data"][i]["take"])
+        "number": data["data"][i]["number"],
+        "name": data["data"][i]["name"],
+        "date": data["data"][i]["date"],
+        "company": data["data"][i]["company"],
+        "take": data["data"][i]["take"]
       })
-      // this.dataDisplay.data = list
+      this.dataDisplay.data = list
       console.log(list) 
     }
+  }
+
+  constructor(private router: Router, private service: ServiceService) {
+
+    this.dataDisplay = new MatTableDataSource(data);
+
+    // Create 100 users
+    // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+
+    // Assign the data to the data source for the table to render
+    // this.dataSource = new MatTableDataSource(users);
+  }
+  detailBt() {
+    this.router.navigateByUrl('/detail');
+  };
+
+  historyBt() {
+    this.router.navigateByUrl('/history');
+  };
+  uploadBt() {
+    this.router.navigateByUrl('/upload');
+  };
+  expressBt() {
+    this.router.navigateByUrl('/expresspage');
+  };
+  adduserBt() {
+    this.router.navigateByUrl('/singup');
+  };
+  summaryBt() {
+    this.router.navigateByUrl('/summary');
   }
 
   ngAfterViewInit() {

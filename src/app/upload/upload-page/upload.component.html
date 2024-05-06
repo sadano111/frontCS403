@@ -44,49 +44,52 @@
         </div>
 
         <div *ngIf="name">
-            <div class="row g-3 align-items-center a1">
-                <div class="col-auto">
-                    <label class="col-form-label">ลำดับที่</label>
+            <div class="card">
+                <div class="row g-3 align-items-center a1">
+                    <div class="col-auto">
+                        <label class="col-form-label">ลำดับที่</label>
+                    </div>
+                
+                    <div class="col-auto b1">
+                        <input [(ngModel)]="number" placeholder="กรุณาใส่ลำดับ" value="number" class="w-100 h2 b1">
+                    </div>
                 </div>
-            
-                <div class="col-auto ">
-                    <input [(ngModel)]="number" placeholder="กรุณาใส่ลำดับ" value="number" class="w-100 h2 b1">
-                </div>
-            </div>
 
-            <div class="row g-3 align-items-center a1">
-                <div class="col-auto">
-                    <label class="col-form-label">เบอร์โทร</label>
+                <div class="row g-3 align-items-center a2">
+                    <div class="col-auto">
+                        <label class="col-form-label">เบอร์โทร</label>
+                    </div>
+                
+                    <div class="col-auto b2">
+                        <input [(ngModel)]="phone" placeholder="กรุณาใส่เบอร์โทร" value="phone" class="w-100 h2 b1">
+                    </div>
                 </div>
-            
-                <div class="col-auto ">
-                    <input [(ngModel)]="phone" placeholder="กรุณาใส่เบอร์โทร" value="phone" class="w-100 h2 b1">
-                </div>
-            </div>
 
-            <div class="row g-3 align-items-center a1">
-                <div class="col-auto">
-                    <label class="col-form-label">ชื่อ</label>
+                <div class="row g-3 align-items-center a3">
+                    <div class="col-auto">
+                        <label class="col-form-label">ชื่อ</label>
+                    </div>
+                
+                    <div class="col-auto b3">
+                        <input [(ngModel)]="name" placeholder="กรุณาใส่ชื่อของคุณ" value="name" class="w-100 h2 b1">
+                    </div>
                 </div>
-            
-                <div class="col-auto ">
-                    <input [(ngModel)]="name" placeholder="กรุณาใส่ชื่อของคุณ" value="name" class="w-100 h2 b1">
-                </div>
-            </div>
 
-            <div class="row g-3 align-items-center a1">
-                <div class="col-auto">
-                    <label class="col-form-label">บริษัทขนส่ง</label>
+                <div class="row g-3 align-items-center a4">
+                    <div class="col-auto">
+                        <label class="col-form-label">บริษัทขนส่ง</label>
+                    </div>
+                
+                    <div class="col-auto b4">
+                        <mat-form-field class="company" appearance="fill">
+                            <mat-select [(ngModel)]="selectedCompany" placeholder="กรุณาเลือกบริษัทขนส่งของคุณ" name="company">
+                                <mat-option *ngFor="let company of express" [value]="company.value">{{company.viewValue}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <!-- <input [(ngModel)]="company" placeholder="กรุณาใส่เบอร์โทร" value="company" class="w-100 h2 b1"> -->
+                    </div>
                 </div>
-            
-                <div class="col-auto ">
-                    <mat-form-field class="company" appearance="fill">
-                        <mat-select [(ngModel)]="selectedCompany" placeholder="กรุณาเลือกบริษัทขนส่งของคุณ" name="company">
-                            <mat-option *ngFor="let company of express" [value]="company.value">{{company.viewValue}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <!-- <input [(ngModel)]="company" placeholder="กรุณาใส่เบอร์โทร" value="company" class="w-100 h2 b1"> -->
-                </div>
+
             </div>
 
             <section>
