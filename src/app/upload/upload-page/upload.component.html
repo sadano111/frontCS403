@@ -32,7 +32,7 @@
     <div class="page-container">
         <h1>บันทึกข้อมูลพัสดุ</h1>
 
-        <div *ngIf="name" class="frame">
+        <div *ngIf="!name" class="frame">
             <div class="center">
                 <div class="title">
                     <h1>Drop file to upload</h1>
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div *ngIf="!name">
+        <div *ngIf="name">
             <div class="card">
                 <div class="row g-3 align-items-center a1">
                     <div class="col-auto">
