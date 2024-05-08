@@ -52,7 +52,7 @@ export class AuthenticationClient {
     roles: string
   ): Observable<string> {
     return this.http.post(
-      'https://cs403.onrender.com/singup',
+      'https://cs403-m3uwkxxhna-as.a.run.app/singup',
       {
         username: username,
         password: password,
