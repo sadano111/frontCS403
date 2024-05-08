@@ -25,7 +25,7 @@ nav {
 }
 body {
     background-color: #21B699;
-    padding: 5rem;
+    /* padding: 5rem; */
 }
 
 /* test */
@@ -193,7 +193,7 @@ h1 {
 }
 
 .example-button-row{
-    margin-top: 35%;
+    margin-top: -20px;
     text-align: center;
     & .bt1{
         margin-right: 20px;
@@ -209,9 +209,9 @@ h1 {
     text-align: center;
     justify-content: center;
 } */
-.example-button-row {
+/* .example-button-row {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-}
+} */

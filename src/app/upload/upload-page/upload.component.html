@@ -3,7 +3,7 @@
 <link
     href="https://fonts.googleapis.com/css2?family=Trirong:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-
+<body>
 <nav>
     <div class="logo">
         <img src="https://pbs.twimg.com/media/Dq07-cvVYAEIs1J.png">
@@ -27,7 +27,7 @@
         </mat-menu>
     </ul>
 </nav>
-<body>
+
 
     <div class="page-container">
         <h1>บันทึกข้อมูลพัสดุ</h1>
@@ -95,15 +95,16 @@
                         <!-- <input [(ngModel)]="company" placeholder="กรุณาใส่เบอร์โทร" value="company" class="w-100 h2 b1"> -->
                     </div>
                 </div>
+                <section>
+                    <div class="example-button-row">
+                        <button class="bt1" mat-raised-button (click)="close()">ยกเลิก</button>
+                        <button class="bt2" mat-raised-button color="primary" (click)="addOCR()">ยืนยัน</button>
+                    </div>
+                </section>
 
             </div>
 
-            <section>
-                <div class="example-button-row">
-                    <button class="bt1" mat-raised-button (click)="close()">ยกเลิก</button>
-                    <button class="bt2" mat-raised-button color="primary" (click)="addOCR()">ยืนยัน</button>
-                </div>
-            </section>
+            
 
         </div>
 

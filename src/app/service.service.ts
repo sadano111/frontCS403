@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 
 export class ServiceService {
-  url = "https://cs403.onrender.com"
+  url = "https://cs403-m3uwkxxhna-as.a.run.app"
 
   getList(){
     return this.http.get(this.url+"/get_all_data");
